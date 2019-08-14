@@ -14,6 +14,7 @@ namespace sonicheroes.utils.toner
 
         public void Start(IModLoaderV1 loader)
         {
+            // TODO: Transfer updated ONE API to HeroesONE-R and take from there as definitions NuGet package.
             _modLoader = (IModLoader)loader;
 
             /* Your mod code starts here. */
