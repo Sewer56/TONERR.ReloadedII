@@ -8,7 +8,7 @@
 </div>
 
 # Prerequisites
-The CRI FS Hook uses the [Hooks Shared Library](https://github.com/Sewer56/Reloaded.SharedLib.Hooks).
+The Hook uses the [Hooks Shared Library](https://github.com/Sewer56/Reloaded.SharedLib.Hooks).
 Please download and extract that mod first.
 
 # About This Project
