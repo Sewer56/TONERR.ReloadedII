@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using Heroes.SDK;
 using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
 using Reloaded.Mod.Interfaces.Internal;
@@ -14,12 +15,13 @@ namespace sonicheroes.utils.toner
 
         public void Start(IModLoaderV1 loader)
         {
-            // TODO: Transfer updated ONE API to HeroesONE-R and take from there as definitions NuGet package.
             _modLoader = (IModLoader)loader;
-
+            
             /* Your mod code starts here. */
             _modLoader.GetController<IReloadedHooks>().TryGetTarget(out _hooks);
-            _toner = new Toner(_hooks);
+            SDK.Init(_hooks);
+
+            _toner = new Toner();
         }
 
         /* Mod loader actions. */
