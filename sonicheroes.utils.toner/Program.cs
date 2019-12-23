@@ -13,6 +13,7 @@ namespace sonicheroes.utils.toner
         private IModLoader _modLoader;
         private Toner _toner;
 
+        public static void Main() { }
         public void Start(IModLoaderV1 loader)
         {
             _modLoader = (IModLoader)loader;
