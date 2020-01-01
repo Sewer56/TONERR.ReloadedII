@@ -1,5 +1,5 @@
 ﻿using System;
-using csharp_prs;
+using Heroes.SDK;
 using Heroes.SDK.Classes.NativeClasses;
 using Heroes.SDK.Definitions.Structures.Archive.OneFile;
 using Heroes.SDK.Parsers;
@@ -92,7 +92,7 @@ namespace sonicheroes.utils.toner
             for (int x = 0; x <= fileEntry; x++)
                 enumerator.MoveNext();
 
-            return Prs.Estimate(enumerator.Current->GetCompressedDataPtr(), enumerator.Current->FileSize);
+            return SDK.Prs.Estimate(enumerator.Current->GetCompressedDataPtr(), enumerator.Current->FileSize);
         }
 
         /* Hooks */

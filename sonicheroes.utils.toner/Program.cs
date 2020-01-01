@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using csharp_prs_interfaces;
 using Heroes.SDK;
 using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
@@ -20,8 +21,8 @@ namespace sonicheroes.utils.toner
             
             /* Your mod code starts here. */
             _modLoader.GetController<IReloadedHooks>().TryGetTarget(out _hooks);
-            SDK.Init(_hooks);
-
+            _modLoader.GetController<IPrsInstance>().TryGetTarget(out var _prsInstance);
+            SDK.Init(_hooks, _prsInstance);
             _toner = new Toner();
         }
 
