@@ -98,47 +98,93 @@ namespace sonicheroes.utils.toner
         /* Hooks */
         private void* LoadCameraTmb(int fileIndex, void* addressToDecompressTo, ref OneFile thisPointer)
         {
-            return _loadCameraTmbHook.OriginalFunction(fileIndex, _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer)), ref thisPointer);
+            bool isLargeObject = _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer), out var newAddress);
+            var returnValue = _loadCameraTmbHook.OriginalFunction(fileIndex, newAddress, ref thisPointer);
+            if (isLargeObject)
+                _buffer.FreeLargeObject();
+
+            return returnValue;
         }
 
         private void* LoadMaestro(void* addressToDecompressTo, ref OneFile thisPointer, int fileIndex)
         {
-            return _loadMaestroHook.OriginalFunction(_buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer)), ref thisPointer, fileIndex);
+            bool shouldFree = _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer), out var newAddress);
+            var returnValue = _loadMaestroHook.OriginalFunction(newAddress, ref thisPointer, fileIndex);
+            if (shouldFree)
+                _buffer.FreeLargeObject();
+
+            return returnValue;
+
         }
 
         private void* LoadUvAnim(int fileIndex, void* addressToDecompressTo, ref OneFile thisPointer)
         {
-            return _loadUvAnimHook.OriginalFunction(fileIndex, _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer)), ref thisPointer);
+            bool isLargeObject = _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer), out var newAddress);
+            var returnValue = _loadUvAnimHook.OriginalFunction(fileIndex, newAddress, ref thisPointer);
+            if (isLargeObject)
+                _buffer.FreeLargeObject();
+
+            return returnValue;
         }
 
         private void* LoadWorld(int fileIndex, void* addressToDecompressTo, ref OneFile thisPointer)
         {
-            return _loadWorldHook.OriginalFunction(fileIndex, _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer)), ref thisPointer);
+            bool isLargeObject = _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer), out var newAddress);
+            var returnValue = _loadWorldHook.OriginalFunction(fileIndex, newAddress, ref thisPointer);
+            if (isLargeObject)
+                _buffer.FreeLargeObject();
+
+            return returnValue;
         }
 
         private void* LoadDeltaMorph(int fileIndex, void* addressToDecompressTo, ref OneFile thisPointer)
         {
-            return _loadDeltaMorphHook.OriginalFunction(fileIndex, _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer)), ref thisPointer);
+            bool isLargeObject = _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer), out var newAddress);
+            var returnValue = _loadDeltaMorphHook.OriginalFunction(fileIndex, newAddress, ref thisPointer);
+            if (isLargeObject)
+                _buffer.FreeLargeObject();
+
+            return returnValue;
         }
 
         private void* LoadSpline(int fileIndex, void* addressToDecompressTo, ref OneFile thisPointer)
         {
-            return _loadSplineHook.OriginalFunction(fileIndex, _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer)), ref thisPointer);
+            bool isLargeObject = _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer), out var newAddress);
+            var returnValue = _loadSplineHook.OriginalFunction(fileIndex, newAddress, ref thisPointer);
+            if (isLargeObject)
+                _buffer.FreeLargeObject();
+
+            return returnValue;
         }
 
         private void* LoadTextureDictionary(int fileIndex, void* addressToDecompressTo, ref OneFile thisPointer)
         {
-            return _loadTextureDictionaryHook.OriginalFunction(fileIndex, _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer)), ref thisPointer);
+            bool isLargeObject = _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer), out var newAddress);
+            var returnValue = _loadTextureDictionaryHook.OriginalFunction(fileIndex, newAddress, ref thisPointer);
+            if (isLargeObject)
+                _buffer.FreeLargeObject();
+
+            return returnValue;
         }
 
         private void* LoadClump(int fileIndex, void* addressToDecompressTo, ref OneFile thisPointer)
         {
-            return _loadClumpHook.OriginalFunction(fileIndex, _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer)), ref thisPointer);
+            bool isLargeObject = _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer), out var newAddress);
+            var returnValue = _loadClumpHook.OriginalFunction(fileIndex, newAddress, ref thisPointer);
+            if (isLargeObject)
+                _buffer.FreeLargeObject();
+
+            return returnValue;
         }
 
         private void* LoadHAnimation(int fileIndex, void* addressToDecompressTo, ref OneFile thisPointer)
         {
-            return _loadHAnimationHook.OriginalFunction(fileIndex, _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer)), ref thisPointer);
+            bool isLargeObject = _buffer.Get(GetSizeOfFile(fileIndex, ref thisPointer), out var newAddress);
+            var returnValue = _loadHAnimationHook.OriginalFunction(fileIndex, newAddress, ref thisPointer);
+            if (isLargeObject)
+                _buffer.FreeLargeObject();
+
+            return returnValue;
         }
     }
 }

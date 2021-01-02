@@ -8,7 +8,7 @@ namespace sonicheroes.utils.toner
     /// <summary>
     /// Represents a single memory allocation.
     /// </summary>
-    public class Allocation : IDisposable
+    public struct Allocation : IDisposable
     {
         public IntPtr Address { get; set; }
         public int    Size    { get; set; }
@@ -23,15 +23,9 @@ namespace sonicheroes.utils.toner
             Size = size;
         }
 
-        ~Allocation()
-        {
-            Dispose();
-        }
-
         public void Dispose()
         {
             Memory.CurrentProcess.Free(Address);
-            GC.SuppressFinalize(this);
         }
 
         /// <summary>

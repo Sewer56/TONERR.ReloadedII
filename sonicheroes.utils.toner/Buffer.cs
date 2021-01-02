@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Reloaded.Memory.Sources;
 
 namespace sonicheroes.utils.toner
@@ -11,26 +12,43 @@ namespace sonicheroes.utils.toner
         /// </summary>
         public int AllocationSize => _memoryAllocation.Size;
 
-        private Allocation _memoryAllocation     = new Allocation(0x100000); // Start with 1 MiB
+        /// <summary>
+        /// Allocation for game files of abnormal size (HD Textures etc).
+        /// </summary>
+        private Allocation _largeObjectAlloc;
+
+        /// <summary>
+        /// Allocation for game files of regular size.
+        /// </summary>
+        private Allocation _memoryAllocation = new Allocation(0x100000); // 1 MiB
 
         public void Dispose()
         {
-            _memoryAllocation?.Dispose();
+            _memoryAllocation.Dispose();
         }
 
         /// <summary>
         /// Returns an address of a memory buffer capable of fitting a given size.
         /// </summary>
-        public void* Get(int size)
+        /// <returns>True if this is a large object allocation and should be freed with <see cref="FreeLargeObject"/>.</returns>
+        public bool Get(int size, out void* address)
         {
             if (_memoryAllocation.CanItemFit(size))
-                return (void*)_memoryAllocation.Address;
+            {
+                address = (void*)_memoryAllocation.Address;
+                return false;
+            }
 
             // Note the finalizer inside Allocation.
             // After a period of time, the GC will manually cleanup the old memory.
-            _memoryAllocation.Dispose();
-            _memoryAllocation = new Allocation(size);
-            return (void*)_memoryAllocation.Address;
+            _largeObjectAlloc = new Allocation(size);
+            address = (void*)_largeObjectAlloc.Address;
+            return true;
         }
+
+        /// <summary>
+        /// Frees the large object heap allocation.
+        /// </summary>
+        public void FreeLargeObject() => _largeObjectAlloc.Dispose();
     }
 }
