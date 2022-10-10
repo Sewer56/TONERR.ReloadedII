@@ -1,5 +1,4 @@
-﻿using System;
-using Heroes.SDK;
+﻿using Heroes.SDK;
 using Heroes.SDK.Classes.NativeClasses;
 using Heroes.SDK.Definitions.Structures.Archive.OneFile;
 using Heroes.SDK.Parsers;

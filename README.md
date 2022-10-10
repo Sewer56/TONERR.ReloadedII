@@ -7,18 +7,15 @@
 <b>Id: sonicheroes.utils.toner</b>
 </div>
 
-# Prerequisites
-The mod uses the [Hooks Shared Library](https://github.com/Sewer56/Reloaded.SharedLib.Hooks).
-Please download and extract that mod first.
-
 # About This Project
 
 The following project is a [Reloaded II](https://github.com/Reloaded-Project/Reloaded-II) Mod Loader mod that allows you to load arbitrarily large files from inside ONE archives. (up to ~2GB)
 
 ## How to Use
-**A.** Install Reloaded mods as usual. (Extract to mod directory)
+**A.** Install Reloaded mods as usual. (Extract to mod directory)  
+**B.** Enable mod and run the game.  
 
-**B.** Enable mod and run the game.
+If your mod needs TONERR, consider setting it as a dependency.
 
 # The Problem Under the Hood
 
@@ -35,3 +32,7 @@ To avoid unnecessary heap allocations, one buffer is reused for all files. This 
 The original TONER used a slightly different approach, you can read a more in-depth explanation about the problem and how the original TONER tackled it here: https://github.com/Sewer56/TONER
 
 In comparison to the original, this is a more "dumb TONER", it sacrifices RAM Usage for CPU, with less heap allocations in particular.
+
+# Acknowledgements
+
+[big by JunGSa from Noun Project](https://thenounproject.com/browse/icons/term/big/)

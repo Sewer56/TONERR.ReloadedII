@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace sonicheroes.utils.toner;
+﻿namespace sonicheroes.utils.toner;
 
 public unsafe class Buffer : IDisposable
 {

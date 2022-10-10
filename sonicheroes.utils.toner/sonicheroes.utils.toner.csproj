@@ -4,22 +4,25 @@
     <TargetFramework>net5.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <ApplicationIcon />
-    <OutputType>WinExe</OutputType>
-    <StartupObject />
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>preview</LangVersion>
+    <LangVersion>10.0</LangVersion>
     <OutputPath>$(RELOADEDIIMODS)\sonicheroes.utils.toner</OutputPath>
-    <RobustILLink>true</RobustILLink>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    
+    <!-- IL Trimming Support for Framework Dependent Apps. Unofficial.
+         If you set this to true, trimming will be enabled when you publish the mod.
+         Test trimming with: `BuildLinked.ps1` in PowerShell. -->
+    <ReloadedILLink>true</ReloadedILLink>
   </PropertyGroup>
 
   <ItemGroup>
-    <RobustLinkRoots Include="sonicheroes.utils.toner" />
-    <RobustLinkAssemblies Include="Reloaded.Memory" />
-    <RobustLinkAssemblies Include="Heroes.SDK" />
+    <ReloadedLinkRoots Include="sonicheroes.utils.toner" />
+    <ReloadedLinkAssemblies Include="Reloaded.Memory" />
+    <ReloadedLinkAssemblies Include="Heroes.SDK" />
   </ItemGroup>
 
-  <Import Project="Robust.Trimming.targets" />
+  <Import Project="Reloaded.Trimming.targets" />
 
   <ItemGroup>
     <None Remove="ModConfig.json" />
@@ -36,7 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Reloaded.Mod.Interfaces" Version="2.1.0" />
+    <PackageReference Include="Reloaded.Mod.Interfaces" Version="2.3.0" ExcludeAssets="runtime" />
     <PackageReference Include="Reloaded.SharedLib.Hooks" Version="1.9.0" />
   </ItemGroup>
 

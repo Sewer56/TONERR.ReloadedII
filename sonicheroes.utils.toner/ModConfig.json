@@ -2,7 +2,7 @@
   "ModId": "sonicheroes.utils.toner",
   "ModName": "TONERR: The ONe Expandonger Reloaded Reloaded",
   "ModAuthor": "Sewer56",
-  "ModVersion": "1.2.1",
+  "ModVersion": "1.2.2",
   "ModDescription": "TONERR is a dynamic memory buffer for Sonic Heroes which allows you to bypass default file size limits for your ONE archive files.",
   "ModDll": "sonicheroes.utils.toner.dll",
   "ModIcon": "Preview.png",
@@ -40,5 +40,6 @@
   "OptionalDependencies": [],
   "SupportedAppId": [
     "tsonic_win.exe"
-  ]
+  ],
+  "ProjectUrl": "https://github.com/Sewer56/TONERR.ReloadedII"
 }

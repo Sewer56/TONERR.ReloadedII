@@ -1,5 +1,4 @@
-﻿using System;
-using Reloaded.Memory.Sources;
+﻿using Reloaded.Memory.Sources;
 
 namespace sonicheroes.utils.toner;
 
@@ -8,7 +7,7 @@ namespace sonicheroes.utils.toner;
 /// </summary>
 public struct Allocation : IDisposable
 {
-    public IntPtr Address { get; set; }
+    public nuint Address { get; set; }
     public int    Size    { get; set; }
 
     /// <summary>
